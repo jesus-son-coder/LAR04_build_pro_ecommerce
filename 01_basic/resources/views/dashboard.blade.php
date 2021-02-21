@@ -7,14 +7,21 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-            <!-- C'est ci que se trouve la bloc visuel de la homepage du Dashboard en mode connecté.
+        <!-- Nouveau bloc personnalisable dans le Dashboard -->
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style="margin-bottom:10px;padding:30px;">
+                <h1>Hello Hervé ;)</h1>
+            </div>
+        </div>
+
+        <!-- C'est ci que se trouve la bloc visuel de la homepage du Dashboard en mode connecté.
                 Vous pouvez le supprimer pour le personnaliser ! -->
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <x-jet-welcome />
             </div>
-            <!-- fin du bloc visuel de la homepage du Dashboard -->
         </div>
+        <!-- fin du bloc visuel de la homepage du Dashboard -->
     </div>
 </x-app-layout>
