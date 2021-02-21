@@ -3,6 +3,7 @@
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/category/all',[CategoryController::class, 'AllCat'])->name('all.categories');
+
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
     // Eloquent ORM mode :
@@ -29,6 +34,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
     return view('dashboard', compact('users'));
 })->name('dashboard');
-
 
 
