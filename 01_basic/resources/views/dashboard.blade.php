@@ -11,7 +11,15 @@
         <!-- Nouveau bloc personnalisable dans le Dashboard -->
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style="margin-bottom:10px;padding:30px;">
-                <h1>Hello Hervé ;)</h1>
+                <div class="row">
+                    <div class="col-6">
+                        <h1 class="h4">Hello <strong>{{ Auth::user()->name }}</strong> ;)</h1>
+                    </div>
+
+                    <div class="col-6 text-right">
+                        <strong>Total users: <span class="badge bg-danger">{{ count($users) }}</span></strong>
+                    </div>
+                </div>
 
                 <style>
                     .dashboard-table-container {
