@@ -13,6 +13,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
+        <!-- Identification de l'inclusion du Stack Livewire : -->
         @livewireStyles
 
         <!-- Scripts -->
@@ -22,6 +23,7 @@
         <x-jet-banner />
 
         <div class="min-h-screen bg-gray-100">
+            <!-- Composant Livewire de Navigation Menu : -->
             @livewire('navigation-menu')
 
             <!-- Page Heading -->
