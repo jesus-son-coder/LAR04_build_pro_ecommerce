@@ -21,6 +21,6 @@ Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
-/sources_codes/*
-sources_codes/*
+/00_sources_codes/*
+00_sources_codes/*
 /.idea/*
