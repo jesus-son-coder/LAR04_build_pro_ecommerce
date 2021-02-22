@@ -10,4 +10,13 @@ class CategoryController extends Controller
     {
         return view('admin.category.index');
     }
+
+    public function AddCat(Request $request)
+    {
+        // Validation :
+        $validatedData = $request->validate([
+            'category_name' => 'required|unique:categories|max:255',
+        ]);
+
+    }
 }
