@@ -15,11 +15,12 @@ class CategoryController extends Controller
     {
         // Validation :
         $validatedData = $request->validate([
-            'category_name' => 'required|unique:categories|max:255',
-        ],
-        [
-            'category_name.required' => "Le nom de la catégorie est obligatoire !",
-        ]
+                'category_name' => 'required|unique:categories|max:255',
+            ],
+            [
+                'category_name.required' => "Le nom de la catégorie est obligatoire !",
+                'category_name.max' => "La taille maximum de la catégorie est 255 caractères !"
+            ]
         );
 
     }
