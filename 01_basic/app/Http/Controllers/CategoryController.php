@@ -14,10 +14,17 @@ class CategoryController extends Controller
     public function AllCat()
     {
         // Pagination avec Eloquent :
-        $categories = Category::latest()->paginate(5);
+        // $categories = Category::latest()->paginate(5);
 
         // Pagination avec Query Builder :
-        // $categories = DB::table('categories')->latest()->paginate(5);
+        $categories = DB::table('categories')->latest()->paginate(5);
+
+        $categories = DB::table('categories')
+                    ->join('users', 'categories.user_id', 'users.id')
+                    // On veut tous les champs de la table "categories"
+                    // et seulement le champ "name" de la table "users" :
+                    ->select('categories.*', 'users.name')
+                    ->latest()->paginate(5);
 
         return view('admin.category.index', compact('categories'));
     }

@@ -51,7 +51,7 @@
                                     <tr>
                                         <th scope="row">{{ $categories->firstItem() + $loop->index }}</th>
                                         <td>{{ $category->category_name }}</td>
-                                        <td>{{ $category->user_id }}</td>
+                                        <td>{{ $category->name }}</td>
                                         <td>
                                             @if($category->created_at)
                                                 {{ Carbon\Carbon::parse($category->created_at)->diffForHumans() }}

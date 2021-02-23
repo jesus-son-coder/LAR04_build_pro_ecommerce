@@ -26,6 +26,7 @@ Route::get('/category/all',[CategoryController::class, 'AllCat'])->name('all.cat
 Route::post('/category/add',[CategoryController::class, 'AddCat'])->name('store.category');
 
 
+// Dashboard :
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
     // Eloquent ORM mode :
