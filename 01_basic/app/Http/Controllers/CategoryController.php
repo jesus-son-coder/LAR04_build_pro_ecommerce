@@ -17,7 +17,10 @@ class CategoryController extends Controller
         // $categories = Category::all();
 
         // Méthode 2 : du plus récent au plus ancien :
-        $categories = Category::latest()->get();
+        // $categories = Category::latest()->get();
+
+        // Méthode avec Query Builder :
+        $categories = DB::table('categories')->latest()->get();
 
         return view('admin.category.index', compact('categories'));
     }
