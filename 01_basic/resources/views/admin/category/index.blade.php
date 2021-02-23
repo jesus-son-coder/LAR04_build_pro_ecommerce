@@ -45,11 +45,11 @@
                                     </tr>
                                     </thead>
 
-                                    @php($i = 1)
+                                    {{--   @php($i = 1) --}}
                                     <tbody>
                                     @foreach($categories as $category)
                                     <tr>
-                                        <th scope="row">{{ $i++ }}</th>
+                                        <th scope="row">{{ $categories->firstItem() + $loop->index }}</th>
                                         <td>{{ $category->category_name }}</td>
                                         <td>{{ $category->user_id }}</td>
                                         <td>
@@ -59,8 +59,15 @@
                                         </td>
                                     </tr>
                                     @endforeach
+
+                                    {{--  La Pagination (affichée en haut du tableau):
+                                    {{ $categories->links() }}
+                                    --}}
                                     </tbody>
                                 </table>
+
+                                <!-- La Pagination (affichée en bas du tableau): -->
+                                {{ $categories->links() }}
                             </div>
                         </div>
                     </div>
@@ -87,7 +94,7 @@
                     </div>
 
                 </div>
-v
+
 
 
             </div>

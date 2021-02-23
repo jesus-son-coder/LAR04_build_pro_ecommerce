@@ -13,14 +13,11 @@ class CategoryController extends Controller
     // afficher toutes les catégories :
     public function AllCat()
     {
-        // Méthode 1 (Eloquent) :
-        // $categories = Category::all();
+        // Pagination avec Eloquent :
+        $categories = Category::latest()->paginate(5);
 
-        // Méthode 2 : du plus récent au plus ancien :
-        // $categories = Category::latest()->get();
-
-        // Méthode avec Query Builder :
-        $categories = DB::table('categories')->latest()->get();
+        // Pagination avec Query Builder :
+        // $categories = DB::table('categories')->latest()->paginate(5);
 
         return view('admin.category.index', compact('categories'));
     }
