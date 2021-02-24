@@ -33,6 +33,8 @@ Route::get('/category/softdelete/{id}',[CategoryController::class, 'SoftDelete']
 
 Route::get('/category/restore/{id}',[CategoryController::class, 'Restore']);
 
+Route::get('/category/destroy/{id}',[CategoryController::class, 'Destroy']);
+
 
 
 

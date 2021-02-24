@@ -105,7 +105,7 @@ class CategoryController extends Controller
     {
         $delete = Category::find($id)->delete();
 
-        return redirect()->back()->with('success', "La Catégorie a été supprimée avec succès !");
+        return redirect()->back()->with('success', "La Catégorie a été supprimée (soft-delete) !");
     }
 
 
@@ -115,6 +115,14 @@ class CategoryController extends Controller
         $deleted = Category::withTrashed()->find($id)->restore();
 
         return redirect()->back()->with('success', "La Catégorie a été restaurée avec succès !");
+    }
+
+
+    public function Destroy($id)
+    {
+        $delete = Category::onlyTrashed()->find($id)->forceDelete();
+
+        return redirect()->back()->with('success', "La Catégorie a été définitivement supprimée !");
     }
 
 

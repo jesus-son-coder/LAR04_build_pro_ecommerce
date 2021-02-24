@@ -33,8 +33,8 @@
 
                             @if(session('success'))
                                 <div class="row alert alert-success alert-dismissible fade show" role="alert">
-                                    <div class="col-6"><strong>{{ session('success') }}</strong></div>
-                                    <button type="button" class="col-6 close text-right" data-dismiss="alert" aria-label="close">
+                                    <div class="col-10"><strong>{{ session('success') }}</strong></div>
+                                    <button type="button" class="col-2 close text-right" data-dismiss="alert" aria-label="close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
@@ -160,7 +160,7 @@
                                         </td>
                                         <td>
                                             <a href="{{ url('category/restore/'. $trashCategory->id) }}" class="btn btn-success">Restore</a>
-                                            <a href="" class="btn btn-outline-danger"><strong>Destroy</strong></a>
+                                            <a href="{{ url('category/destroy/'. $trashCategory->id) }}" class="btn btn-outline-danger"><strong>Destroy</strong></a>
                                         </td>
                                     </tr>
                                     @endforeach
