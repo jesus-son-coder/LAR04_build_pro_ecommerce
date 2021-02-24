@@ -16,8 +16,12 @@
                         padding: 1.5rem;
                         border: 1px solid #dee2e6;
                         border-top-left-radius: .25rem;
-                        border-top-right-radius: .25rem;
-                        /* margin-top: 25px; */
+                        border-top-right-radius: .25rem
+                    }
+                    .alert-dismissible {
+                        padding-right: 0px !important;
+                        margin-left: 0px !important;
+                        margin-right: 0px !important;
                     }
                 </style>
 
@@ -26,9 +30,9 @@
                         <div class="card">
 
                             @if(session('success'))
-                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <div><strong>{{ session('success') }}</strong></div>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <div class="row alert alert-warning alert-dismissible fade show" role="alert">
+                                    <div class="col-6"><strong>{{ session('success') }}</strong></div>
+                                    <button type="button" class="col-6 close text-right" data-dismiss="alert" aria-label="close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
@@ -42,6 +46,7 @@
                                         <th scope="col">Category Name</th>
                                         <th scope="col">User Name</th>
                                         <th scope="col">Created At</th>
+                                        <th scope="col">Actions</th>
                                     </tr>
                                     </thead>
 
@@ -51,11 +56,15 @@
                                     <tr>
                                         <th scope="row">{{ $categories->firstItem() + $loop->index }}</th>
                                         <td>{{ $category->category_name }}</td>
-                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $category->user->name }}</td>
                                         <td>
                                             @if($category->created_at)
                                                 {{ Carbon\Carbon::parse($category->created_at)->diffForHumans() }}
                                             @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{ url('category/edit/'. $category->id) }}" class="btn btn-info"><strong>Edit</strong></a>
+                                            <a href="" class="btn btn-danger">Delete</a>
                                         </td>
                                     </tr>
                                     @endforeach
