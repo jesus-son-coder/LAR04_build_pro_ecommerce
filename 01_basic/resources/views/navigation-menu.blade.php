@@ -20,6 +20,11 @@
                     <x-jet-nav-link href="{{ route('all.categories') }}" :active="request()->routeIs('all.categories')">
                         {{ __('All Categories') }}
                     </x-jet-nav-link>
+
+                    <!-- rajouter un autre lien dans le Menu : -->
+                    <x-jet-nav-link href="{{ route('all.brands') }}" :active="request()->routeIs('all.brands')">
+                        {{ __('Les Marques') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 

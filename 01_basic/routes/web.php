@@ -4,6 +4,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,11 +17,18 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
+/* ********************* */
+/*          Home       : */
+/* ********************* */
 Route::get('/', function () {
     return view('welcome');
 });
 
+
+/* ********************* */
 /* Category Controller : */
+/* ********************* */
+
 Route::get('/category/all',[CategoryController::class, 'AllCat'])->name('all.categories');
 
 Route::post('/category/add',[CategoryController::class, 'AddCat'])->name('store.category');
@@ -37,9 +45,19 @@ Route::get('/category/destroy/{id}',[CategoryController::class, 'Destroy']);
 
 
 
+/* ********************* */
+/* Brands / Les Marques  */
+/* ********************* */
+
+Route::get('/brand/all',[BrandController::class, 'AllBrands'])->name('all.brands');
 
 
-// Dashboard :
+
+
+
+/* ******************* */
+/*       Dashboard     */
+/* ******************* */
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
     // Eloquent ORM mode :
