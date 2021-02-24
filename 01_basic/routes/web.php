@@ -29,6 +29,8 @@ Route::get('/category/edit/{id}',[CategoryController::class, 'Edit']);
 
 Route::post('/category/update/{id}',[CategoryController::class, 'Update']);
 
+Route::get('/category/softdelete/{id}',[CategoryController::class, 'SoftDelete']);
+
 
 
 

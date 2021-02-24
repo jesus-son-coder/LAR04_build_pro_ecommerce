@@ -17,6 +17,8 @@ class CategoryController extends Controller
         // Pagination avec Eloquent :
         $categories = Category::latest()->paginate(5);
 
+        $trashCategories = Category::onlyTrashed()->latest()->paginate(3);
+
         // Pagination avec Query Builder :
         // $categories = DB::table('categories')->latest()->paginate(5);
 
@@ -29,7 +31,7 @@ class CategoryController extends Controller
                     ->latest()->paginate(5);
         */
 
-        return view('admin.category.index', compact('categories'));
+        return view('admin.category.index', compact('categories', 'trashCategories'));
     }
 
 
@@ -84,11 +86,11 @@ class CategoryController extends Controller
     public function Update(Request $request, $id)
     {
         // Méthode  Eloquent ORM :
-        $category = Category::find($id)->update([
+/*      $category = Category::find($id)->update([
             'category_name' => $request->category_name,
             'user_id' => Auth::user()->id
         ]);
-
+*/
         // Méthode Query Builder :
         $data = array();
         $data['category_name'] = $request->category_name;
@@ -96,6 +98,14 @@ class CategoryController extends Controller
         DB::table('categories')->where('id',$id)->update($data);
 
         return redirect()->route('all.categories')->with('success', "La Catégorie a été modifiée avec succès !");
+    }
+
+
+    public function SoftDelete($id)
+    {
+        $delete = Category::find($id)->delete();
+
+        return redirect()->back()->with('success', "La Catégorie a été supprimée avec succès !");
     }
 
 

@@ -8,7 +8,9 @@
 
     <div class="py-12">
 
-        <!-- Nouveau bloc personnalisable dans le Dashboard -->
+        <!-- ------------------------ -->
+        <!-- Les Catégories actives : -->
+        <!-- ------------------------ -->
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style="margin-bottom:10px;padding:30px;">
                 <style>
@@ -37,7 +39,7 @@
                                     </button>
                                 </div>
                             @endif
-                            <div class="card-header">All Categories</div>
+                            <div class="card-header h4">Categories actives</div>
                             <div class="dashboard-table-container">
                                 <table class="table table-striped table-hover">
                                     <thead>
@@ -64,14 +66,11 @@
                                         </td>
                                         <td>
                                             <a href="{{ url('category/edit/'. $category->id) }}" class="btn btn-info"><strong>Edit</strong></a>
-                                            <a href="" class="btn btn-danger">Delete</a>
+                                            <a href="{{ url('category/softdelete/' . $category->id) }}" class="btn btn-danger">Delete</a>
                                         </td>
                                     </tr>
                                     @endforeach
 
-                                    {{--  La Pagination (affichée en haut du tableau):
-                                    {{ $categories->links() }}
-                                    --}}
                                     </tbody>
                                 </table>
 
@@ -108,7 +107,87 @@
 
             </div>
         </div>
+        <!-- Fin des Categories actives -->
 
+
+
+        <!-- ------------------------------------------- -->
+        <!-- Les Catégories supprimées ("Soft Delete") : -->
+        <!-- ------------------------------------------- -->
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style="margin-bottom:10px;padding:30px;">
+                <style>
+                    .dashboard-table-container {
+                        padding: 1.5rem;
+                        border: 1px solid #dee2e6;
+                        border-top-left-radius: .25rem;
+                        border-top-right-radius: .25rem
+                    }
+                    .alert-dismissible {
+                        padding-right: 0px !important;
+                        margin-left: 0px !important;
+                        margin-right: 0px !important;
+                    }
+                </style>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header h4">Delete Categories (TrashList)</div>
+                            <div class="dashboard-table-container">
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Category Name</th>
+                                        <th scope="col">User Name</th>
+                                        <th scope="col">Created At</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                    </thead>
+
+                                    {{--   @php($i = 1) --}}
+                                    <tbody>
+                                    @foreach($trashCategories as $trashCategory)
+                                    <tr>
+                                        <th scope="row">{{ $trashCategories->firstItem() + $loop->index }}</th>
+                                        <td>{{ $trashCategory->category_name }}</td>
+                                        <td>{{ $trashCategory->user->name }}</td>
+                                        <td>
+                                            @if($trashCategory->created_at)
+                                                {{ Carbon\Carbon::parse($trashCategory->created_at)->diffForHumans() }}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{ url('category/edit/'. $trashCategory->id) }}" class="btn btn-info"><strong>Edit</strong></a>
+                                            <a href="" class="btn btn-danger">Delete</a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+
+                                    {{--  La Pagination (affichée en haut du tableau):
+                                    {{ $categories->links() }}
+                                    --}}
+                                    </tbody>
+                                </table>
+
+                                <!-- La Pagination (affichée en bas du tableau): -->
+                                {{ $trashCategories->links() }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+        <!-- End Trashlist -->
 
     </div>
 </x-app-layout>
