@@ -75,7 +75,7 @@
                                     <tr>
                                         <th scope="row">{{ $brands->firstItem() + $loop->index }}</th>
                                         <td>{{ $brand->brand_name }}</td>
-                                        <td><img src="" alt=""></td>
+                                        <td><img src="{{ asset($brand->brand_image) }}" alt="" width="75px"></td>
                                         <td>
                                             @if($brand->created_at)
                                                 {{ Carbon\Carbon::parse($brand->created_at)->diffForHumans() }}
@@ -101,7 +101,7 @@
                         <div class="card">
                             <div class="card-header h5">Ajouter une Marque</div>
                             <div class="card-body">
-                                <form action="" method="POST">
+                                <form action="{{ route('store.brand') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group" style="margin-bottom: 5px;">
                                         <label for="brandInput" id="label-brand-name" >Nom de la Marque</label>

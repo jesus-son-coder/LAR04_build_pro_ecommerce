@@ -51,6 +51,8 @@ Route::get('/category/destroy/{id}',[CategoryController::class, 'Destroy']);
 
 Route::get('/brand/all',[BrandController::class, 'AllBrands'])->name('all.brands');
 
+Route::Post('/brand/add',[BrandController::class, 'StoreBrand'])->name('store.brand');
+
 
 
 
