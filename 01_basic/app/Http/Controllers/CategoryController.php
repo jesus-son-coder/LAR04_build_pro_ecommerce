@@ -109,4 +109,13 @@ class CategoryController extends Controller
     }
 
 
+    public function Restore($id)
+    {
+        // On récupère un élément "soft-deleté" :
+        $deleted = Category::withTrashed()->find($id)->restore();
+
+        return redirect()->back()->with('success', "La Catégorie a été restaurée avec succès !");
+    }
+
+
 }

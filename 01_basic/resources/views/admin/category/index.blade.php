@@ -159,8 +159,8 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ url('category/edit/'. $trashCategory->id) }}" class="btn btn-info"><strong>Edit</strong></a>
-                                            <a href="" class="btn btn-danger">Delete</a>
+                                            <a href="{{ url('category/restore/'. $trashCategory->id) }}" class="btn btn-success">Restore</a>
+                                            <a href="" class="btn btn-outline-danger"><strong>Destroy</strong></a>
                                         </td>
                                     </tr>
                                     @endforeach
