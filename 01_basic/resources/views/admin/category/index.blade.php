@@ -30,7 +30,7 @@
                         <div class="card">
 
                             @if(session('success'))
-                                <div class="row alert alert-warning alert-dismissible fade show" role="alert">
+                                <div class="row alert alert-success alert-dismissible fade show" role="alert">
                                     <div class="col-6"><strong>{{ session('success') }}</strong></div>
                                     <button type="button" class="col-6 close text-right" data-dismiss="alert" aria-label="close">
                                         <span aria-hidden="true">&times;</span>

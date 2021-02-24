@@ -72,17 +72,28 @@ class CategoryController extends Controller
 
     public function Edit($id)
     {
-        $category = Category::find($id);
+        // Eloquent ORM :
+        // $category = Category::find($id);
+
+        // Query Builder :
+        $category = DB::table('categories')->where('id',$id)->first();
 
         return view('admin.category.edit', compact('category'));
     }
 
     public function Update(Request $request, $id)
     {
+        // Méthode  Eloquent ORM :
         $category = Category::find($id)->update([
             'category_name' => $request->category_name,
             'user_id' => Auth::user()->id
         ]);
+
+        // Méthode Query Builder :
+        $data = array();
+        $data['category_name'] = $request->category_name;
+        $data['user_id'] = Auth::user()->id;
+        DB::table('categories')->where('id',$id)->update($data);
 
         return redirect()->route('all.categories')->with('success', "La Catégorie a été modifiée avec succès !");
     }
