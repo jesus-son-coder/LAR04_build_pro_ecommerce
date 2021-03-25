@@ -3,8 +3,9 @@
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MultiImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +59,16 @@ Route::get('/brand/edit/{id}', [BrandController::class, 'Edit'])->name('edit.bra
 Route::Post('/brand/update/{id}', [BrandController::class, 'Update'])->name('update.brand');
 
 Route::get('/brand/delete/{id}', [BrandController::class, 'Delete'])->name('delete.brand');
+
+
+
+/* ********************* */
+/*      Multi Images     */
+/* ********************* */
+
+Route::get('multi/images', [MultiImageController::class, 'Multipic'])->name('multi.images');
+
+Route::post('multi/images/add', [MultiImageController::class, 'StoreImages'])->name('multi.images.store');
 
 
 

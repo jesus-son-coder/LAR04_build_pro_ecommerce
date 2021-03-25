@@ -56,7 +56,7 @@
                                 </div>
                             @endif
 
-                            <div class="card-header h4">La Marques</div>
+                            <div class="card-header h4">Les Marques</div>
                             <div class="dashboard-table-container">
                                 <table class="table table-striped table-hover">
                                     <thead>
