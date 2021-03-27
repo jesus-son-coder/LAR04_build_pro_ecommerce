@@ -30,7 +30,7 @@
                                     @csrf
                                     <div class="form-group" style="margin-bottom: 10px;">
                                         <label for="categoryInput"  style="margin-bottom: 5px;"><strong>Modifier le Nom de la Catégorie</strong></label>
-                                        <input type="text" name="category_name" class="form-control" id="categoryInput" aria-describedby="emailHelp" placeholder="Saisir une catégorie" value="{{ $brand->brand_image }}">
+                                        <input type="text" name="category_name" class="form-control" id="categoryInput" aria-describedby="emailHelp" placeholder="Saisir une catégorie" value="{{ $category->category_name }}">
 
                                         @error('category_name')
                                             <span class="text-danger">{{ $message }}</span>
